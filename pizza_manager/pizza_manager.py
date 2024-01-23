@@ -6,15 +6,9 @@ class PizzaManager:
         self.pizzas = []
         self.counter = []
 
-    def add_pizzas(self, toppings):
+    def add_pizzas(self, toppings: list):
         # will add toppings to pizza and store it for the pizza
         count = 1
-
-        toppings = (
-            input("Input toppings (1-3), write each topping with a space inbetween: ")
-            .replace(" ", ",")
-            .split(",")
-        )
 
         pizza = Pizza()
 
@@ -46,8 +40,6 @@ class PizzaManager:
                 pizza.pop(index)
 
 
-
 # unit tests
-    # import class into unit tests
+# import class into unit tests
 # have a sequens diagram to work by
-# 
