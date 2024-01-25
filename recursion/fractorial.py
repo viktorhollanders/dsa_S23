@@ -1,7 +1,8 @@
 def fractorial(n):
-    if n == 1:
+    if n == 0:
         return 1
-    return fractorial(n - 1) * n
+    else:
+        return n * fractorial(n - 1)
 
 
 print(fractorial(5))
