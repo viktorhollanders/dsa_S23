@@ -67,11 +67,11 @@ def binary_search(arr, low, high, x):
         return 0
 
 def prefix(prefix, a_str):
-    
+    pass
 
 
 def is_substring(sub, a_Str):
-    if
+    pass
 
 
 def main():
