@@ -15,84 +15,78 @@ class NotOrdered(Exception):
 
 
 class ArrayList:
-    def __init__(self):
+    def __init__(self) -> None:
         self.size = 0
         self.capacity = 4
         self.arr = [None] * self.capacity
-        self.ordered = True # checks if the list is orderd
+        self.ordered = True
 
-    # Time complexity: O(n) - linear time in size of list
-    def __str__(self):
-        """The str function prints the content of the string if it is not the last item add a space and comma in bewtween"""
-        return_string = ""
+    def __str__(self) -> str:
+        display = ""
 
-        for i in range(0, self.size):
+        for i in range(self.size):
+            # if i dose not equal the size - 1
+            # e.g. the last element
+
             if i == self.size - 1:
-                return_string += str(self.arr[i])
+                display += f"{self.arr[i]}"
             else:
-                return_string += f"{self.arr[i]}, "
+                display += f"{self.arr[i]}, "
+        return display
 
-        return return_string
-
-    # Time complexity: O(n) - linear time in size of list
     def prepend(self, value):
         self.resize()
         self.insert(value, 0)
 
-    # Time complexity: O(n) - linear time in size of list
     def insert(self, value, index):
-        # The if check for the resize is in the resize function
+        if index > self.size or index < 0:
+            raise IndexOutOfBounds()
         self.resize()
-        self.check_index_out_of_bounds(index, self.size)
-        # start at the end of the list
-        for i in range(self.size, index - 1, -1):
-            if i != 0 and i != index:
-                self.arr[i] = self.arr[i - 1]
 
+        for i in range(self.size, index - 1, -1):
             if i == index:
                 self.arr[i] = value
-        self.size += 1
+                break
+            self.arr[i] = self.arr[i - 1]
 
-    # Time complexity: O(1) - constant time
+        self.size += 1
+        self.ordered = False
+
     def append(self, value):
         self.resize()
         self.arr[self.size] = value
         self.size += 1
+        self.ordered = False
 
-    # Time complexity: O(1) - constant time
     def set_at(self, value, index):
-        if index == 0:
-            self.check_index_out_of_bounds(index, self.size - 1)
+        if index < 0 or index > self.size - 1:
+            raise IndexOutOfBounds()
 
-        self.check_index_out_of_bounds(index, self.size - 1)
-
-        for i in range(0, self.size):
+        for i in range(self.size):
             if i == index:
-                self.arr[index] = value
+                self.arr[i] = value
 
-    # Time complexity: O(1) - constant time
-    def get_first(self) -> list:
-        self.check_empty(self.size)
+    def get_first(self):
+        if self.size == 0:
+            raise Empty()
         return self.arr[0]
 
-    # Time complexity: O(1) - constant time
     def get_at(self, index):
-        if self.size < 0:
-            self.check_index_out_of_bounds(index, self.size - 1)
+        if self.size == 0:
+            raise IndexOutOfBounds()
+        else:
+            if index < 0 or index >= self.size:
+                raise IndexOutOfBounds()
+            else:
+                return self.arr[index]
 
-        self.check_index_out_of_bounds(index, self.size - 1)
-        for i in range(0, self.size):
-            if i == index:
-                return self.arr[i]
-
-    # Time complexity: O(1) - constant time
     def get_last(self):
-        self.check_empty(self.size)
+        if self.size == 0:
+            raise Empty()
         return self.arr[self.size - 1]
 
-    # Time complexity: O(n) - linear time in size of list
     def resize(self):
-        ''' Checks if the arr neds to be resized. If it dose not need to be rezised return'''
+        """Checks if the arr needs to be resized. If it dose not need to be rezised return"""
         if self.size >= self.capacity:
             self.capacity *= 2
             tempArr = [None] * self.capacity
@@ -102,57 +96,50 @@ class ArrayList:
             self.arr = tempArr
         return None
 
-    # Time complexity: O(n) - linear time in size of list
     def remove_at(self, index):
-        self.check_index_out_of_bounds(index, self.size)
-        for i in range(0, self.size):
-            if i >= index:
+        if index > self.size - 1 or index < 0:
+            raise IndexOutOfBounds()
+        if self.size > 0:
+            for i in range(index, self.size - 1):
                 self.arr[i] = self.arr[i + 1]
-        self.size -= 1
 
-    # Time complexity: O(1) - constant time
+            self.size -= 1
+        return self.arr
+
     def clear(self):
         self.size = 0
+        self.capacity = 4
         self.arr = [None] * self.capacity
 
-    def check_order(self):
-        ''' Checks id=f the list is orderd'''
-        for i in range(0, self.size):
-            if self.arr[i] <= self.arr[i + i]:
-                continue
-            self.ordered = False
-
-    # Time complexity: O(n) - linear time in size of list
     def insert_ordered(self, value):
-        # TODO: remove 'pass' and implement functionality
-        # if value at i is grater than value incert the value
-        for i in range(0, self.size):
-            pass
+        if self.ordered is False and self.size > 1:
+            raise NotOrdered()
 
-        self.check_order()
+        for i in range(self.size):
+            if self.arr[i] > value:
+                self.insert(value, i)
+                self.ordered = True
+                break
+            else:
+                continue
+        return self.arr
 
-    # Time complexity: O(n) - linear time in size of list
-    # Time complexity: O(log n) - logarithmic time in size of list
     def find(self, value):
-        if self.check_order():
-            self.binary_search(self.arr, 0, self.size, value)
+        if self.size == 0:
+            return None
+        if self.ordered:
+            self.binary_search(self.arr, 0, self.size - 1, value)
         else:
             self.linear_search(self.arr, value)
 
-    # Time complexity: O(n) - linear time in size of list
     def remove_value(self, value):
-        self.check_empty()
+        if self.size == 0:
+            return None
+
         index = self.find(value)
+        if index > self.size:
+            raise NotFound()
         self.remove_at(index)
-
-    def check_index_out_of_bounds(self, index, check_size):
-        if index > check_size:
-            raise IndexOutOfBounds()
-        return True
-
-    def check_empty(self, size):
-        if size < 1:
-            raise Empty()
 
     def binary_search(self, arr, low, high, x):
         if high >= low:
@@ -166,23 +153,29 @@ class ArrayList:
             else:
                 return self.binary_search(arr, mid + 1, high, x)
         else:
-            return 0
+            raise NotFound()
 
-    def linear_search(self, li, x):
+    def linear_search(self, li, val):
         if not li:
-            return False
-        elif li[0] == x:
-            print(x)
+            raise NotFound()
+        elif li[0] == val:
+            return val
         else:
-            return self.linear_search(li[1:], x)
+            return self.linear_search(li[1:], val)
 
 
 if __name__ == "__main__":
-    pass
-    # add your tests here or in a different file.
-    # Do not add them outside this if statement
-    # and make sure they are at this indent level
+    my_arr = ArrayList()
 
-    arr_lis = ArrayList()
+    # my_arr.insert(1, 0)
+    # my_arr.insert(2, 1)
+    # my_arr.insert(5, 2)
+    # my_arr.insert(8, 3)
+    # my_arr.append(10)
+    # my_arr.append(13)
+    # my_arr.append(20)
+    # my_arr.append(24)
+    # my_arr.insert_ordered(15)
+    # my_arr.get_at(2)
 
-    print(arr_lis)
+    print(my_arr)

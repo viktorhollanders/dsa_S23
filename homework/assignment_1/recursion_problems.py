@@ -4,16 +4,18 @@ def modulus(a, b):  # ONLY NEEDS TO WORK FOR POSITIVE INTEGERS
     elif a < b:
         return a
     else:
-       return modulus(a - b, b)
+        return modulus(a - b, b)
 
 
-def how_many(lis1, lis2):
-    # TODO: remove 'pass' and implement functionality
-    count = 0
+def how_many(lis1, lis2, count=0, index=0):
+    if len(lis1) == index:
+        return count
 
-    #cound how many values in the two list match
-
-    
+    else:
+        if lis1[index] in lis2:
+            return how_many(lis1, lis2, count + 1, index + 1)
+        else:
+            return how_many(lis1, lis2, count, index + 1)
 
 
 # FEEL FREE TO EDIT THE TESTS AND MAKE THEM BETTER

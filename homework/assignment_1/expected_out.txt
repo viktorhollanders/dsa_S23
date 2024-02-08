@@ -1,6 +1,6 @@
 
     new int
-current list: 
+current list:
 
     prepend 23
 current list: 23
@@ -65,10 +65,10 @@ current list: 3, 4, 23, 24
 current list: 3, 4, 23
 
     clear
-current list: 
+current list:
 
     new string
-current list: 
+current list:
 
     prepend "twentythree"
 current list: twentythree
@@ -133,10 +133,10 @@ current list: three, four, twentythree, twentyfour
 current list: three, four, twentythree
 
     clear
-current list: 
+current list:
 
     new my_class
-current list: 
+current list:
 
     prepend "23 twentythree 23.23"
 current list: {twentythree number 23: 23.23}
@@ -201,20 +201,20 @@ current list: {three number 3: 3.3}, {four number 4: 4.4}, {twentythree number 2
 current list: {three number 3: 3.3}, {four number 4: 4.4}, {twentythree number 23: 23.23}
 
     clear
-current list: 
+current list:
 
     new int
-current list: 
+current list:
 
     remove_at 1
 Index out of bounds!
 
     get_at 0
-current list: 
+current list:
 Index out of bounds!
 
     get_at 1
-current list: 
+current list:
 Index out of bounds!
 
     prepend 99
@@ -427,7 +427,7 @@ current list: 56, 12, 90, 33, 31, 38, 27, 41, 61, 88, 88, 87, 57, 55, 53, 36, 17
 value: 74
 
     clear
-current list: 
+current list:
 
     remove_at 2
 Index out of bounds!
@@ -436,7 +436,7 @@ Index out of bounds!
 Index out of bounds!
 
     get_last
-current list: 
+current list:
 The list is empty!
 
     set_at 36 2
@@ -446,21 +446,21 @@ Index out of bounds!
 Index out of bounds!
 
     get_first
-current list: 
+current list:
 The list is empty!
 
     remove_at 1
 Index out of bounds!
 
     get_first
-current list: 
+current list:
 The list is empty!
 
     set_at 12 0
 Index out of bounds!
 
     get_first
-current list: 
+current list:
 The list is empty!
 
     insert 14 0
@@ -865,13 +865,13 @@ current list: 55, 59, 90, 13, 93, 71, 66, 63, 91, 32, 61, 20, 62, 97, 18, 99, 78
 value: 70
 
     clear
-current list: 
+current list:
 
     clear
-current list: 
+current list:
 
     get_first
-current list: 
+current list:
 The list is empty!
 
     insert 99 2
@@ -992,10 +992,10 @@ value: 57
 current list: 57, 25, 73, 41, 92, 91, 37, 65
 
     clear
-current list: 
+current list:
 
     get_first
-current list: 
+current list:
 The list is empty!
 
     set_at 60 1
@@ -1035,22 +1035,22 @@ current list: 59, 60
 current list: 59
 
     remove_at 0
-current list: 
+current list:
 
     get_last
-current list: 
+current list:
 The list is empty!
 
     get_at 0
-current list: 
+current list:
 Index out of bounds!
 
     get_at 0
-current list: 
+current list:
 Index out of bounds!
 
     clear
-current list: 
+current list:
 
     append 96
 current list: 96
@@ -1153,7 +1153,7 @@ Index out of bounds!
 current list: 33, 13, 32, 10, 60, 69, 97, 31, 96, 94, 10
 
     clear
-current list: 
+current list:
 
     insert 69 0
 current list: 69
@@ -1293,13 +1293,13 @@ value: 72
 current list: 20, 81, 49, 44, 10, 17, 72, 72, 39, 32, 69, 29, 72, 90, 61
 
     clear
-current list: 
+current list:
 
     remove_at 1
 Index out of bounds!
 
     get_last
-current list: 
+current list:
 The list is empty!
 
     insert 34 1
@@ -1437,7 +1437,7 @@ value: 83
 current list: 46, 83, 15, 77, 83, 92, 77, 25, 87, 46, 93, 86, 15
 
     clear
-current list: 
+current list:
 
     insert 10 0
 current list: 10
@@ -1720,7 +1720,7 @@ value: 18
 current list: 17, 31, 62, 72, 90, 93, 59, 54, 10, 23, 51, 32, 43, 13, 30, 41, 67, 56, 76, 48, 99, 18
 
     clear
-current list: 
+current list:
 
     append 73
 current list: 73
@@ -1807,14 +1807,14 @@ current list: 31, 75, 78, 47, 76, 73, 68, 82, 58
 value: 82
 
     clear
-current list: 
+current list:
 
     get_first
-current list: 
+current list:
 The list is empty!
 
     get_last
-current list: 
+current list:
 The list is empty!
 
     prepend 22
@@ -1829,10 +1829,10 @@ current list: 22
 value: 22
 
     clear
-current list: 
+current list:
 
     get_at 2
-current list: 
+current list:
 Index out of bounds!
 
     insert 65 1
@@ -1900,7 +1900,7 @@ current list: 17, 31
 value: 31
 
     clear
-current list: 
+current list:
 
     append 66
 current list: 66
@@ -1984,10 +1984,10 @@ current list: 14, 77, 83, 44, 66, 31
 value: 31
 
     clear
-current list: 
+current list:
 
     get_first
-current list: 
+current list:
 The list is empty!
 
     append 71
@@ -2140,7 +2140,7 @@ current list: 64, 45, 41, 33, 58, 43, 39, 71, 84, 71, 68, 70, 31, 30, 86, 53, 56
 current list: 64, 45, 41, 33, 58, 43, 39, 71, 84, 71, 68, 70, 31, 30, 53, 56, 29, 57, 88, 98
 
     clear
-current list: 
+current list:
 
     insert 86 1
 Index out of bounds!
@@ -2149,14 +2149,14 @@ Index out of bounds!
 Index out of bounds!
 
     get_last
-current list: 
+current list:
 The list is empty!
 
     remove_at 0
 Index out of bounds!
 
     get_last
-current list: 
+current list:
 The list is empty!
 
     prepend 84
@@ -2388,7 +2388,7 @@ current list: 70, 67, 74, 36, 59, 99, 38, 65, 81, 44, 66, 59, 49, 20, 45, 21
 current list: 58, 70, 67, 74, 36, 59, 99, 38, 65, 81, 44, 66, 59, 49, 20, 45, 21
 
     clear
-current list: 
+current list:
 
     insert 14 0
 current list: 14
@@ -2415,14 +2415,14 @@ Index out of bounds!
 Index out of bounds!
 
     clear
-current list: 
+current list:
 
     get_first
-current list: 
+current list:
 The list is empty!
 
     get_at 0
-current list: 
+current list:
 Index out of bounds!
 
     set_at 15 1
@@ -2432,7 +2432,7 @@ Index out of bounds!
 Index out of bounds!
 
     get_last
-current list: 
+current list:
 The list is empty!
 
     prepend 63
@@ -2443,7 +2443,7 @@ current list: 63
 value: 63
 
     new int
-current list: 
+current list:
 
     append 91
 current list: 91
@@ -2662,34 +2662,34 @@ Index out of bounds!
 current list: 70, 10, 21, 14, 21, 17, 64, 42, 34, 74, 66, 60, 78
 
     clear
-current list: 
+current list:
 
     get_last
-current list: 
+current list:
 The list is empty!
 
     get_at -2
-current list: 
+current list:
 Index out of bounds!
 
     get_at -1
-current list: 
+current list:
 Index out of bounds!
 
     get_last
-current list: 
+current list:
 The list is empty!
 
     get_first
-current list: 
+current list:
 The list is empty!
 
     get_first
-current list: 
+current list:
 The list is empty!
 
     get_first
-current list: 
+current list:
 The list is empty!
 
     prepend 99
@@ -3094,10 +3094,10 @@ current list: 60, 52, 82, 28, 11, 27, 24, 47, 62, 25, 29, 53, 71, 71, 58, 54, 48
 value: 51
 
     clear
-current list: 
+current list:
 
     new int
-current list: 
+current list:
 
     insert_ordered 15
 current list: 15
@@ -3160,7 +3160,7 @@ current list: 10, 11, 11, 11, 12, 13, 13, 13, 13, 13, 13, 13, 15, 16, 25, 27, 28
 current list: 10, 11, 11, 11, 12, 13, 13, 13, 13, 13, 13, 13, 15, 16, 21, 25, 27, 28, 28, 29
 
     new int
-current list: 
+current list:
 
     insert_ordered 13
 current list: 13
@@ -3223,7 +3223,7 @@ current list: 10, 11, 11, 12, 12, 13, 13, 14, 18, 19, 19, 20, 20, 21, 23, 25, 25
 current list: 10, 11, 11, 12, 12, 13, 13, 14, 18, 19, 19, 20, 20, 21, 23, 25, 25, 27, 29, 30
 
     clear
-current list: 
+current list:
 
     insert 47 0
 current list: 47
@@ -3286,7 +3286,7 @@ Index out of bounds!
 Index out of bounds!
 
     clear
-current list: 
+current list:
 
     insert_ordered 56
 current list: 56
@@ -3313,7 +3313,7 @@ current list: 20, 49, 56, 56, 58, 84, 32
 The list is not ordered
 
     clear
-current list: 
+current list:
 
     insert_ordered 56
 current list: 56
@@ -3340,7 +3340,7 @@ current list: 20, 49, 56, 56, 86, 58, 84
 The list is not ordered
 
     clear
-current list: 
+current list:
 
     insert 57 0
 current list: 57
@@ -3469,7 +3469,7 @@ current list: 99, 26, 50, 27, 96, 97, 76, 99, 70, 17, 90, 56, 95, 82, 96, 78, 56
 The list is not ordered
 
     new int
-current list: 
+current list:
 
     prepend 23
 current list: 23
@@ -3638,7 +3638,7 @@ current list: 44, 28, 41, 93, 34, 83, 52, 85, 34, 74, 65, 78, 43, 39, 13, 76, 33
 Value not found in list
 
     clear
-current list: 
+current list:
 
     insert_ordered 29
 current list: 29
