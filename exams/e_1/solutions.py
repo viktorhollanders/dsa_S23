@@ -52,10 +52,10 @@ def count_in_range(lis, range_from, range_to):
     # else pass
 
 
-def count_oc():
-    num = 1
-    count = 0
-    return count + num
+# def count_oc():
+#     num = 1
+#     count = 0
+#     return count + num
 
 
 def count_in_range_1(lis, range_from, range_to):
@@ -63,16 +63,17 @@ def count_in_range_1(lis, range_from, range_to):
         return count_in_range_1(lis, range_from, range_to=len(lis) - 1)
 
     if lis[range_from] == lis[range_to]:
-        return count_oc()
+        return 0
     else:
-        return count_in_range_1(lis, range_from + 1, range_to) + count_oc()
+        return count_in_range_1(lis, range_from + 1, range_to) + 1
 
 
-def remove_odd_indexes(lis):
-    # if the index is odd remove the item at that index from the list
-
-    # else keep the item
-    return lis
+def remove_odd_indexes(lis, ei_list=[]):
+    if len(lis) == 0:
+        return ei_list
+    else:
+        ei_list.append(lis[0])
+        return remove_odd_indexes(lis[2:], ei_list)
 
 
 if __name__ == "__main__":
