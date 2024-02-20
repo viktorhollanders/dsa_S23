@@ -48,7 +48,7 @@ def insert_orderd(node, data):
         new_node = Node(data, node.next)
         node.next = new_node
     else:
-        return insert_orderd(node.next)
+        return insert_orderd(node.next, data)
 
 
 def reverse_linked_list(head):
@@ -64,7 +64,7 @@ def reverse_linked_list(head):
 
 
 def merge_lists(node_a, node_b):
-    
+
     pass
 
 
@@ -87,7 +87,7 @@ if __name__ == "__main__":
     m3 = add_node("8", m2)
     m4 = add_node("10", m3)
 
-    print_linked_list(n3)
+    print_linked_list(n4)
     print_linked_list(m3)
 
     print(length_of_list(head_a))
