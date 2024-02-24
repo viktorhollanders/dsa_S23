@@ -8,6 +8,10 @@ class Stack:
         # Stack must have the container you dont choose for Queue
 
         # self.container = LinkedList()
+
+        # The push_back and pop_back from the arrayDequeu are used for the stack since it will make the runtime O(1)
+        # To push on a stack the push_back function can be used since what is first in is the first out
+        # To pop a stack the pop_back function can be used since what is first in is the first out
         self.container = ArrayDeque()
         pass
 

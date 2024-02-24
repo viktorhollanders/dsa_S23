@@ -12,6 +12,8 @@ class LinkedList:
 
     # front = head
     def push_front(self, data):
+        """Pushes from the front of the linkes list
+        """
         new_node = Node(data)
         if not self.head:
             self.head = new_node
@@ -25,6 +27,9 @@ class LinkedList:
         return self.head
 
     def pop_front(self):
+        """Removes a node from the front of the list
+        - Returns the value of the node that was removed of
+        """
         if self.head is None:
             return self.head
 
@@ -35,6 +40,8 @@ class LinkedList:
 
     # Back = tail
     def push_back(self, data):
+        """Adds a new node to the back of the linked list
+        """
         new_node = Node(data)
 
         if self.head is None:
@@ -46,6 +53,9 @@ class LinkedList:
         self.size += 1
 
     def pop_back(self):
+        """Removes a node from  the back of the linked list
+        - Returns the value of the node that was removed of
+        """
         if self.head is None:
             return None
 
@@ -66,6 +76,8 @@ class LinkedList:
         return data
 
     def get_size(self):
+        """Gets the size of the linked list
+        """
         return self.size
 
     def __str__(self):
@@ -77,5 +89,3 @@ class LinkedList:
             current = current.next
 
         return ret_linked_list.strip()
-
-        # return ""

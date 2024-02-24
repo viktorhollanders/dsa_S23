@@ -146,7 +146,7 @@ def main():
 
     dll.clear()
     print(str(dll) + "   -   current value: " + str(dll.get_value()) + "   -   size: " + str(len(dll)))
-    
+
 
     dll.insert("B")
     print(str(dll) + "   -   current value: " + str(dll.get_value()) + "   -   size: " + str(len(dll)))

@@ -13,13 +13,28 @@ def print_to_screen(head):
 
 
 def get_size(head):
+    """Gets the size of the linked list using recursion
+
+    - if the head is not none we make the recursive call and add 1 to the result
+    - If the head is none it eather menes that the list is empty in which case it will return 0
+    - Or that the last element has been reached and the function will pop the elements from the stack
+    finaly returning the result
+    """
     if head is None:
-        return True
+        return 0
     else:
         return get_size(head.next) + 1
 
 
 def reverse_list(head):
+    """A function that reverses a single linked list
+
+    - Asumes that the list is in its original order
+    - Ones we hit the second to last element we set the next node to that to the new head
+    - when we reach the last element of the original head we set the next element
+    to None
+    - As the recursion unwinds, reverses the pointers to reverse the list.
+    """
     if head is None or head.next is None:
         return head
 
@@ -30,16 +45,33 @@ def reverse_list(head):
 
 
 def palindrome(head):
-    # get the tail of the linked list
+    """A function that checks if the a liked list contains a palindrome
 
-    # On each iteration we move the head the the next node
-    # becasue of the recursion the tail will move upwards
+    - start by walking down to the tail of the lsit
+    - then compare the head and the tail of the linked list.
+    - if they ever return false. it wil be set in the first walue fo the tuple.
+    - since this is checked in the if check it will always return false there after ensuring that we get a falsy value
+    - The same goes for the true conditon
+    """
 
-    # compare the current head and the tail on each iteration
-    #   if the match return True
-    #   if any of the cases return false keep returning false
-    pass
+    def check_for_palindrome(current_head, tail):
+        # Walk down the linked list until we reach the end
+        if tail is None:
+            return True, current_head
+        # compare the curent head to the next tail
+        is_pal, current_head_comparison = check_for_palindrome(current_head, tail.next)
+        # if the is_pall is false of the curent head is not equal to the tail the return value is
+        # dwwiched to false
+        if not is_pal or current_head_comparison.data != tail.data:
+            return False, current_head_comparison
+        # else the compasriosn from curent head was true and it gets moved by one and it retuns true
+        return True, current_head_comparison.next
 
+    # here we pass in the head twice and walk the second one all the way down to get the tail
+    # the second value is a throw away value which we dont need.
+    # the true false is stored in the result and that is what is returned from the function
+    result, _ = check_for_palindrome(head, head)
+    return result
 
 
 if __name__ == "__main__":

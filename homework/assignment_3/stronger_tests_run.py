@@ -1,53 +1,69 @@
 import sys
-from dll import DLL
-
 from random import Random
 
+from dll import DLL
+
+
 def test_print(dll):
-    print(str(dll).strip() + "   -   current value: " + str(dll.get_value()) + "   -   size: " + str(len(dll)))
+    print(
+        str(dll).strip()
+        + "   -   current value: "
+        + str(dll.get_value())
+        + "   -   size: "
+        + str(len(dll))
+    )
+
 
 def test_insert(dll, num):
     print("insert " + str(num))
     dll.insert(num)
     test_print(dll)
 
+
 def test_remove(dll):
     print("remove")
     dll.remove()
     test_print(dll)
+
 
 def test_move_to_next(dll):
     print("move_to_next")
     dll.move_to_next()
     test_print(dll)
 
+
 def test_move_to_prev(dll):
     print("move_to_prev")
     dll.move_to_prev()
     test_print(dll)
+
 
 def test_move_to_pos(dll, pos):
     print("move_to_pos " + str(pos))
     dll.move_to_pos(pos)
     test_print(dll)
 
+
 def test_clear(dll):
     print("clear")
     dll.clear()
     test_print(dll)
+
 
 def test_sort(dll):
     print("sort")
     dll.sort()
     test_print(dll)
 
+
 def test_partition(dll):
     print("partition")
     if len(dll) != 0:
         dll.partition(dll.get_first_node(), dll.get_last_node())
     else:
-        print("empty list")    
+        print("empty list")
     test_print(dll)
+
 
 def test_get_first_node(dll):
     print("get_first_node")
@@ -57,6 +73,7 @@ def test_get_first_node(dll):
     print("first node: ", str(result))
     test_print(dll)
 
+
 def test_get_last_node(dll):
     print("get_last_node")
     result = dll.get_last_node()
@@ -64,6 +81,7 @@ def test_get_last_node(dll):
         result = result.data
     print("last node: ", str(result))
     test_print(dll)
+
 
 def test_dll(fin):
     for cmd in fin:
@@ -92,10 +110,10 @@ def test_dll(fin):
         elif cmd[0] == "partition":
             test_partition(dll)
 
-def main():
 
+def main():
     orig_stdout = sys.stdout
-    fout = open('out.txt', 'w+')
+    fout = open("out.txt", "w+")
     sys.stdout = fout
 
     fin = open("tests.txt")
@@ -108,5 +126,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
