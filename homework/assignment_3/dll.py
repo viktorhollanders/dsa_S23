@@ -98,6 +98,16 @@ class DLL:
         """Loops from low to high and moves all nodes less than low infront of pivot.
         - Takes in two nodes as parameters.
         - Sets the current node to the pivot onse the function is done.
+
+        The pivot is set to low
+        Then we check all notes untill we reach the end (the outer while loop)
+        On each iteration we check if:
+        - the note being checked is les than the pivot the curent node gets set to pivot
+        this is so we can insert infront of the pivot
+        - We set the current node to the node being checked to be able to remove the current nodethe
+        - We set the cuttent node back to pivot again.
+        - This prosess is repeted everytime we hit a node that is les then pivot
+        If the node is more than pivot we move on
         """
         pivot = low
         self.current_node = pivot
@@ -129,6 +139,7 @@ class DLL:
 
             # outer loop starts at the second element
             while pivot != self._trailer:
+                # inner loop to swap the elements
                 while swap_node.prev != self._head:
                     previous_node = swap_node.prev
 
@@ -142,7 +153,6 @@ class DLL:
                 swap_node = pivot
 
                 self.current_node = self.get_first_node()
-
 
     def __len__(self):
         """Returns the lenght of a DLL"""
