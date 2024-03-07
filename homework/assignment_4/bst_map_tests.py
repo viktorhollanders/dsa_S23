@@ -1,4 +1,4 @@
-﻿from bst_map import BSTMap
+﻿from bst_tree import BSTMap
 from exeptions import ItemExistsException, NotFoundException
 
 # you can also import more than one file,

@@ -15,30 +15,29 @@ class BSTMap:
         self.size = 0
 
     def __insert_recur(self, node, key, data):
-        try:
-            if node is None:
-                return Node(key, data)
+        if node is None:
+            return Node(key, data)
 
-            if key < node.key:
-                node.left = self.__insert_recur(node.left, key, data)
-                return node
-
-            if key > node.key:
-                node.right = self.__insert_recur(node.right, key, data)
-                return node
-
-            self.size += 1
+        if key < node.key:
+            node.left = self.__insert_recur(node.left, key, data)
             return node
-        except ItemExistsException:
-            print("error")
+
+        if key > node.key:
+            node.right = self.__insert_recur(node.right, key, data)
+            return node
+
+        return node
 
     def insert(self, key, data):
-        self.root = self.__insert_recur(self.root, key, data)
+        try:
+            self.root = self.__insert_recur(self.root, key, data)
+        except None:
+            ItemExistsException
 
     def __update_recur(self, node, key, data):
         try:
-            if node == key:
-                node = node.data
+            if node.key == key:
+                node.dat = data
                 return node
 
             if key < node.key:
@@ -50,23 +49,24 @@ class BSTMap:
                 return node
 
             return node
-        except FileNotFoundError:
+        except NotFoundException:
             print("error")
 
+
     def update(self, key, data):
-        self.root = self.__update_recur(self.root, key, data)
+            self.root = self.__update_recur(self.root, key, data)
 
     def __find_recur(self, node, key):
         try:
-            if key == node:
+            if key == node.key:
                 return node.data
 
             if key < node.key:
-                node.left = self.__insert_recur(node.left, key)
+                node.left = self.__find_recur(node.left, key)
                 return node
 
             if key > node.key:
-                node.right = self.__insert_recur(node.right, key)
+                node.right = self.__find_recur(node.right, key)
                 return node
 
             return node
@@ -75,7 +75,7 @@ class BSTMap:
             print("error")
 
     def find(self, key):
-        self.root = self.__find_recur(self.root, key)
+        return self.__find_recur(self.root, key)
 
     def __contains_recur(self, node, key):
         if key is None:
@@ -92,7 +92,7 @@ class BSTMap:
         return True
 
     def contains(self, key):
-        self.root = self.__contains_recur(self.root, key)
+        return self.__contains_recur(self.root, key)
 
     def __swap_remove_left_most(self, original_node, node):
         if node is None or node.left is None:
@@ -133,15 +133,18 @@ class BSTMap:
         self.root = self.__remove_recur(self.root, key)
 
     def __setitem__(self, key, data):
-        # If equal ​key​ is already in the collection, update its ​data​ value
-        if self.insert(key, data):
+        has_key = self.find(key)
 
-        #   Otherwise add the value pair to the collection
-
-        pass
+        if has_key:
+            self.update(data)
+        else:
+            self.insert(key, data)
 
     def __getitem__(self, key):
-        pass
+        try:
+            self.find(key)
+        except None:
+            NotFoundException
 
     def __len__(self):
         pass

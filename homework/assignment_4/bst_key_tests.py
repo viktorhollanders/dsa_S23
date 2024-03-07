@@ -1,4 +1,4 @@
-import bst_map import *
+import test import *
 
 if __name__ == "__main__":
     k1 = MyComparableKey(1, "one")
