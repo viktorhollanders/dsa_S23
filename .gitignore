@@ -1,1 +1,10 @@
+# Ds store file
 .DS_Store
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+env/

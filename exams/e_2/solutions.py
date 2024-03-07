@@ -19,7 +19,7 @@ def sum_even_numbers(node):
 
 
 def remove_even_numbers(node):
-    if node.next is None:
+    if node is None:
         return node
     # recursively call the next node
     node.next = remove_even_numbers(node.next)
