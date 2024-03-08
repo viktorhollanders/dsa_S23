@@ -15,7 +15,7 @@ class BST:
 
         if value < current.data:
             current.left = self.__insetrt_recur(current.left, value)
-            return currentc
+            return current
 
         if value > current.data:
             current.right = self.__insetrt_recur(current.right, value)

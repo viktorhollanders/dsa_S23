@@ -8,3 +8,7 @@ class NotFoundException(Exception):
 
 class MyComparableKey(Exception):
     pass
+
+
+class BSTisEmptyError(Exception):
+    pass
