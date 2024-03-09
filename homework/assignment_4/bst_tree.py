@@ -114,10 +114,10 @@ class BSTMap:
         except NotFoundException:
             return False
 
-    def __swap_remove_left_most_node(self):
+    def __swap_remove_left_most_node(self, original_node, node):
         pass
 
-    def __remove_node(self):
+    def __remove_node(self, node):
         pass
 
     def __remove_recur(self, node, key):
@@ -162,7 +162,7 @@ class BSTMap:
             output += f"{{{node.key}: {node.data}}} "
             output += self.__print_preorder(node.right)
 
-        if output == "":
+        if output == " ":
             return f"The tree has {self.size} items."
         return output
 
@@ -171,19 +171,26 @@ class BSTMap:
         return self.__print_preorder(self.root)
 
 
-
 m = BSTMap()
 # print(len(m))
-# m.insert(5, "five")
-# m.insert(3, "three")
-# m.insert(7, "seven")
-# # print(m)
-# # m.update(3, "hello")
-# m.find(3)
-# # print(m.contains(10))
-# m[6] = "six"
-# # print(m)
-# # get_seven = m[100]
-
+m.insert(5, "five")
+m.insert(3, "three")
+m.insert(7, "seven")
+m.insert(4, "four")
+m.insert(10, "10")
+m.insert(11, "eleven")
 print(m)
+m.remove(7)
+print(m)
+
+
+# m.update(3, "hello")
+# m.find(3)
+# print(m.contains(10))
+# m[6] = "six"
+# print(m)
+# get_seven = m[100]
+
+
+# print(m)
 # print(len(m))

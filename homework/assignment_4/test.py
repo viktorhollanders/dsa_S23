@@ -52,9 +52,8 @@ class BSTMap:
         except NotFoundException:
             print("error")
 
-
     def update(self, key, data):
-            self.root = self.__update_recur(self.root, key, data)
+        self.root = self.__update_recur(self.root, key, data)
 
     def __find_recur(self, node, key):
         try:
