@@ -23,21 +23,16 @@ class BSTMap:
         """
         if node is None:
             return Node(key, data)
-
-        if key < node.key:
+        elif key < node.key:
             node.left = self.__insert_recur(node.left, key, data)
-            return node
-
-        if key > node.key:
+        elif key > node.key:
             node.right = self.__insert_recur(node.right, key, data)
-            return node
-
-        if node is not None and node.key == key:
+        else:
             raise ItemExistsException("Item already exists")
 
         return node
 
-    def insert(self, key, data):
+    def insert(self, key, data) -> None:
         """The function inserts a ndoe to the bst map.
         Riases and error if the node already exists.
         """
@@ -57,18 +52,16 @@ class BSTMap:
         if node is None:
             raise NotFoundException("Item not found")
 
-        if key < node.key:
+        elif key < node.key:
             node.left = self.__update_recur(node.left, key, data)
-            return node
 
-        if key > node.key:
+        elif key > node.key:
             node.right = self.__update_recur(node.right, key, data)
-            return node
 
         node.data = data
         return node
 
-    def update(self, key, data):
+    def update(self, key, data) -> None:
         """The function  updates the value of a node if the node is found. Raises an erro if the node dose not exist."""
         try:
             return self.__update_recur(self.root, key, data)
@@ -85,28 +78,21 @@ class BSTMap:
         """
         if node is None:
             raise NotFoundException("Item not found")
-        if key == node.key:
-            return node
-
-        if key < node.key:
+        elif key < node.key:
             node = self.__find_recur(node.left, key)
-            return node
-
-        if key > node.key:
+        elif key > node.key:
             node = self.__find_recur(node.right, key)
+        else:
             return node
-
         return node
 
-    def find(self, key):
+    def find(self, key) -> None:
         """The function finds the node and returns the data if it exist. Raises an error if the ndoe is not found."""
-        try:
-            node = self.__find_recur(self.root, key)
-            print(node.data)
-        except NotFoundException as e:
-            print(e)
+        node = self.__find_recur(self.root, key)
+        print(node.data)
 
-    def contains(self, key):
+
+    def contains(self, key) -> bool:
         """The function returns True if the node exists in the tree and fall otherwise."""
         try:
             self.__find_recur(self.root, key)
@@ -114,23 +100,44 @@ class BSTMap:
         except NotFoundException:
             return False
 
-    def __swap_remove_left_most_node(self, original_node, node):
-        pass
+    def __swap_remove_left_most_node(self, node):
+        if node is None or node.left is None:
+            return self.__swap_remove_left_most_node(node.left)
+        else:
+            value = node.data
+            self.__remove_node(node)
+            return value
 
-    def __remove_node(self, node):
-        pass
+    def __remove_node(self, node, key):
+        print("I work")
+        if node.left is None and node.right is None:
+            return None
+        elif node.left is None:
+            return node.right
+        elif node.right is None:
+            return node.left
+        else:
+            return self.__swap_remove_left_most_node(node.right)
 
     def __remove_recur(self, node, key):
-        pass
+        if node is None:
+            raise NotFoundException("Item not found")
+        elif key < node.key:
+            node.left = self.__remove_recur(node.left, key)
+        elif key > node.key:
+            node.right = self.__remove_recur(node.right, key)
+        else:
+            return self.__remove_node(node, key)
+        return node
 
-    def remove(self, key):
+    def remove(self, key) -> None:
         """A function that removes an item from the BST map. Raises a not found error if the item is not found."""
         try:
-            self.__remove_recur(self.root, key)
-        except NotFoundException:
-            pass
+            self.root = self.__remove_recur(self.root, key)
+        except NotFoundException as e:
+            print(e)
 
-    def __setitem__(self, key, data):
+    def __setitem__(self, key, data) -> None:
         """The function allows for the use of some_bst_map[key] = data syntax.
         - If the node is found it updates its value.
         - Else it adds the node to the BST map.
@@ -141,14 +148,14 @@ class BSTMap:
             self.__insert_recur(self.root, key, data)
             self.size += 1
 
-    def __getitem__(self, key):
+    def __getitem__(self, key) -> None:
         """The function allows for the use of
         my_data = some_bst_map[key] syntax.
         - Returns the value of the node. Raises an erro otherwise.
         """
         return self.find(key)
 
-    def __len__(self):
+    def __len__(self) -> int:
         """Overwrites the default len method and returns the size of the BST map."""
         return self.size
 
@@ -171,20 +178,22 @@ class BSTMap:
         return self.__print_preorder(self.root)
 
 
-m = BSTMap()
-# print(len(m))
-m.insert(5, "five")
-m.insert(3, "three")
-m.insert(7, "seven")
-m.insert(4, "four")
-m.insert(10, "10")
-m.insert(11, "eleven")
-print(m)
-m.remove(7)
-print(m)
+# m = BSTMap()
+# # print(len(m))
+# m.insert(5, "five")
+# m.insert(3, "three")
+# m.insert(4, "four")
+# m.insert(10, "ten")
+# m.insert(11, "eleven")
+# print(m)
+# m.remove(7)
+# print(m)
+# m.remove(3)
+# print(m)
 
 
 # m.update(3, "hello")
+# print(m)
 # m.find(3)
 # print(m.contains(10))
 # m[6] = "six"
