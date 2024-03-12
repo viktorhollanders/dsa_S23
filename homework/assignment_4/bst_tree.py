@@ -91,17 +91,26 @@ class BSTMap:
         except NotFoundException:
             return False
 
-    def __swap_remove_left_most_node(self, node):
-        if node.left is not None and node.right is not None:
-            temp = node.right
-            while temp.left is not None:
-                temp = temp.left
-            node = temp
-            node.right = self.__remove_node(node.right)
-
+    def __swap_remove_left_most_node(self, node, node_to_replace):
+        """Removes the node that is the left most node if the right subtree."""
+        if node_to_replace.left is None:
+            node.key = node_to_replace.key
+            node.data = node_to_replace.data
+            node.right = self.__remove_node(node_to_replace)
             return node
+        else:
+            node_to_replace.left = self.__swap_remove_left_most_node(
+                node, node_to_replace.left
+            )
+            return node_to_replace
 
     def __remove_node(self, node):
+        """Removes the node
+        - If both left and right are none then just remove the node
+        - If left is none return the right node
+        - If  right is none retunr left node
+        - If node has two child node call the swap and remove leftmost
+        """
         if node.left is None and node.right is None:
             return None
         elif node.left is None:
@@ -109,9 +118,10 @@ class BSTMap:
         elif node.right is None:
             return node.left
         else:
-            return self.__swap_remove_left_most_node(node.right)
+            return self.__swap_remove_left_most_node(node, node.right)
 
     def __remove_recur(self, node, key):
+        """The function finds the node that should be removed"""
         if node is None:
             raise NotFoundException()
         elif key < node.key:
@@ -119,6 +129,7 @@ class BSTMap:
         elif key > node.key:
             node.right = self.__remove_recur(node.right, key)
         else:
+            self.size -= 1
             return self.__remove_node(node)
         return node
 
@@ -164,53 +175,18 @@ class BSTMap:
 
     def __str__(self) -> str:
         """Returns a string with the items printed in order on the format {key: value}"""
-        return self.__print_preorder(self.root)
+        ret_val = self.__print_preorder(self.root)
+        return ret_val.strip()
 
 
-m = BSTMap()
+if __name__ == "__main__":
+    m = BSTMap()
 
-m.insert(5, "five")
-m.insert(4, "four")
-m.insert(7, "seven")
-print(m)
-m.update(5, "j'onas")
-print(m)
+    m.insert(8, "three")
+    m.insert(7, "seven")
+    m.insert(4, "four")
+    m.insert(2, "two")
+    m.insert(10, "thrtenee")
+    m.insert(20, "thrtwentee")
 
-print(m.find(5))
-
-print("true false test")
-print("should return ture")
-print(m.contains(7))
-
-print("should return false")
-print(m.contains(700))
-
-print("Remove test")
-print(m)
-m.remove(5)
-print(m)
-
-
-# Old tests
-# m.insert(3, "three")
-# m.insert(4, "four")
-# m.insert(10, "ten")
-# m.insert(11, "eleven")
-# print(m)
-# m.remove(7)
-# print(m)
-# m.remove(3)
-# print(m)
-
-
-# m.update(3, "hello")
-# print(m)
-# m.find(3)
-# print(m.contains(10))
-# m[6] = "six"
-# print(m)
-# get_seven = m[100]
-
-
-# print(m)
-# print(len(m))
+    print(m)
