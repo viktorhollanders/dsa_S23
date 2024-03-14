@@ -34,9 +34,7 @@ class BSTMap:
         return node
 
     def insert(self, key, data) -> None:
-        """The function inserts a ndoe to the bst map.
-        Riases and error if the node already exists.
-        """
+        """The function inserts a ndoe to the bst map."""
         self.root = self.__insert_recur(self.root, key, data)
 
     def __update_recur(self, node, key, data):
@@ -58,7 +56,7 @@ class BSTMap:
             node.data = data
 
     def update(self, key, data) -> None:
-        """The function  updates the value of a node if the node is found. Raises an erro if the node dose not exist."""
+        """The function  updates the value of a node if the node is found."""
         self.__update_recur(self.root, key, data)
 
     def __find_recur(self, node, key):
@@ -67,7 +65,7 @@ class BSTMap:
         - If the node is not found the function raises an erro
         - If the key is less than the current node go left.
         - If the key is grater than the current node go right.
-        If the key is found it will retun the node.
+        If the node is found it will retun the node.
         """
         if node is None:
             raise NotFoundException()
@@ -79,7 +77,7 @@ class BSTMap:
             return node
 
     def find(self, key) -> None:
-        """The function finds the node and returns the data if it exist. Raises an error if the ndoe is not found."""
+        """The function finds the node and returns the data if it exist."""
         node = self.__find_recur(self.root, key)
         return node.data
 
@@ -91,18 +89,19 @@ class BSTMap:
         except NotFoundException:
             return False
 
-    def __swap_remove_left_most_node(self, node, node_to_replace):
-        """Removes the node that is the left most node if the right subtree."""
-        if node_to_replace.left is None:
-            node.key = node_to_replace.key
-            node.data = node_to_replace.data
-            node.right = self.__remove_node(node_to_replace)
+    def __swap_remove_left_most_node(self, node, node_to_delete):
+        """Removes the node that is the left most node in the right sub tree.
+        - Sets the data and key of the node that will be replaced to the node being passed into the function."""
+        if node_to_delete.left is None:
+            node.key = node_to_delete.key
+            node.data = node_to_delete.data
+            node.right = self.__remove_node(node_to_delete)
             return node
         else:
-            node_to_replace.left = self.__swap_remove_left_most_node(
-                node, node_to_replace.left
+            node_to_delete.left = self.__swap_remove_left_most_node(
+                node, node_to_delete.left
             )
-            return node_to_replace
+            return node_to_delete
 
     def __remove_node(self, node):
         """Removes the node
@@ -121,7 +120,17 @@ class BSTMap:
             return self.__swap_remove_left_most_node(node, node.right)
 
     def __remove_recur(self, node, key):
-        """The function finds the node that should be removed"""
+        """The function finds the node that should be removed.
+        - If the node is not found it raises an error
+        - If the key is less than the node.key go left
+        - If the key is more than the node.key go right
+        - If the key is found the __remove_node function is called. It checks for the following
+          conditions.
+        -       If both left and right are none then just remove the node
+        -       If left is none return the right node
+        -       If  right is none retunr left node
+        -       If node has two child node call the swap and remove leftmost
+        """
         if node is None:
             raise NotFoundException()
         elif key < node.key:
@@ -134,13 +143,14 @@ class BSTMap:
         return node
 
     def remove(self, key) -> None:
-        """A function that removes an item from the BST map. Raises a not found error if the item is not found."""
+        """A function that removes a node."""
         self.root = self.__remove_recur(self.root, key)
 
     def __setitem__(self, key, data) -> None:
-        """The function allows for the use of some_bst_map[key] = data syntax.
-        - If the node is found it updates its value.
-        - Else it adds the node to the BST map.
+        """The function dose a overwrite for the use of some_bst_map[key] = data syntax.
+        - The function relise on the error from the __update function to trigger the following
+        -   If the node is found it updates its value.
+        -   Else it adds the node to the BST map.
         """
         try:
             self.__update_recur(self.root, key, data)
@@ -177,16 +187,3 @@ class BSTMap:
         """Returns a string with the items printed in order on the format {key: value}"""
         ret_val = self.__print_preorder(self.root)
         return ret_val.strip()
-
-
-if __name__ == "__main__":
-    m = BSTMap()
-
-    m.insert(8, "three")
-    m.insert(7, "seven")
-    m.insert(4, "four")
-    m.insert(2, "two")
-    m.insert(10, "thrtenee")
-    m.insert(20, "thrtwentee")
-
-    print(m)

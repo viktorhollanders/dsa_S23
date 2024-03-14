@@ -1,4 +1,4 @@
-import test import *
+from my_comparable_key import MyComparableKey
 
 if __name__ == "__main__":
     k1 = MyComparableKey(1, "one")
