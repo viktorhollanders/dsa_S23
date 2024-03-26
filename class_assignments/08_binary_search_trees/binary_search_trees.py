@@ -21,7 +21,6 @@ class BST:
             current.right = self.__insetrt_recur(current.right, value)
             return current
 
-        print("already exists")
         return current
 
     def insert(self, value):

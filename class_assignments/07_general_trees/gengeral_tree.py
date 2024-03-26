@@ -51,7 +51,7 @@ class General_tree:
         print()
 
     def __count_occurance_recursive(self, node, value):
-        """some comment"""
+        """Count ocurances of """
         count = 0
 
         if node.data == value:
@@ -68,6 +68,8 @@ class General_tree:
         else:
             occurances = self.__count_occurance_recursive(self.root, value)
             return occurances
+
+    
 
     def replace_value(self, value=None, replace_value=None):
         pass

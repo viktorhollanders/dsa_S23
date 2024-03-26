@@ -1,5 +1,5 @@
 from bucket import Bucket
-from exeptions import ItemExistsException, NotFoundException
+from exeptions import NotFoundException
 
 
 class HashMap:
@@ -70,17 +70,3 @@ class HashMap:
 
     def __len__(self):
         return self.size
-
-
-# if __name__ == "__main__":
-#     m = HashMap()
-#     m.insert(4, "four")
-#     m.insert(5, "five")
-#     m.insert(2, "two")
-
-#     m.update(2, "john")
-
-#     print(m.find(5))
-#     print(m.find(10))
-#     print(m.contains(2))
-#     print(m.find(5))
